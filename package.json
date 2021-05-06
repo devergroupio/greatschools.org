@@ -1,0 +1,40 @@
+{
+  "name": "create-react-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@vercel/node": "^1.9.1",
+    "antd": "^4.15.2",
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.6",
+    "helmet": "^4.5.0",
+    "lodash": "^4.17.21",
+    "node-sass": "4.14.1",
+    "querystring": "^0.2.1",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
+    "react-helmet": "^6.1.0",
+    "react-scripts": "2.1.1",
+    "typescript": "^4.2.4"
+  },
+  "scripts": {
+    "dev": "BROWSER=none react-scripts start",
+    "local": "vercel dev --listen 5000",
+    "deploy": "vercel .",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@types/lodash": "^4.14.168",
+    "@types/node": "^14.14.37",
+    "@types/numeral": "^2.0.1",
+    "@types/react": "^17.0.3"
+  }
+}
