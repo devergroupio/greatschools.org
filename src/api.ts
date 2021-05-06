@@ -25,10 +25,10 @@ export const API$search = async (query, page = 1) => {
   };
 };
 
-export const API$detail = async id => {
+export const API$detail = async path => {
   const { data } = await api.get("/detail", {
     params: {
-      id
+      path
     }
   });
   return data;

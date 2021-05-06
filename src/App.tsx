@@ -35,9 +35,9 @@ const Item = ({ data, onDetail }) => {
       </p>
       <p>{data.rating}/10</p>
       <p>{data.enrollment} students</p>
-      <Button type="ghost" onClick={onDetail}>
-        Detail
-      </Button>
+      <a href={`/api/detail?path=${data.links.profile}`} target="_blank">
+        Detail JSON
+      </a>
     </div>
   );
 };

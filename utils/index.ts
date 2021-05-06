@@ -12,6 +12,17 @@ const createClient = () => {
   });
 };
 
+const data2Json = data => {
+  const $ = cheerio.load(data);
+
+  const fields = $("[data-component-name]").toArray();
+  return fields.reduce((p, f) => {
+    const fieldName = $(f).attr("data-component-name");
+    const filedData = JSON.parse($(f).html());
+    p[fieldName] = filedData;
+    return p;
+  }, {});
+};
 export const search = async (query, page = 1) => {
   const client = createClient();
   const { data } = await client.get("/search/search.page", {
@@ -29,6 +40,9 @@ export const search = async (query, page = 1) => {
   }
 };
 
-export const detail = async id => {
-  return [];
+export const detail = async path => {
+  const client = createClient();
+  const { data } = await client.get(path);
+
+  return data2Json(data);
 };
