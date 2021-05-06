@@ -20,18 +20,25 @@ const Item = ({ data, onDetail }) => {
   }, []);
 
   return (
-    <>
-      <Image src={data.imgSrc} />
-      <p>{data.price}</p>
+    <div
+      style={{
+        padding: "20px"
+      }}
+    >
+      <p>{data.name}</p>
 
       <p>
-        {data.baths} bds, {data.beds} ba, {data.area} sqft - {data.statusText}
+        {data.address["street1"]} {data.address["street2"]} {data.address["zip"]} {data.address["city"]}
       </p>
-      <p>{data.address}</p>
+      <p>
+        {data.schoolType} {data.gradeLevels}
+      </p>
+      <p>{data.rating}/10</p>
+      <p>{data.enrollment} students</p>
       <Button type="ghost" onClick={onDetail}>
         Detail
       </Button>
-    </>
+    </div>
   );
 };
 

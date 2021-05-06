@@ -7,25 +7,21 @@ const api = axios.create({
 
 export const API$search = async (query, page = 1) => {
   const {
-    data: {
-      searchResults: { listResults },
-      searchList
-    }
+    data: { schools, pageSize, totalPages, total }
   } = await api.get("/search", {
     params: {
       query,
       page
     }
   });
-  const totalPages = _.get(searchList, "totalPages");
-  const totalResultCount = _.get(searchList, "totalResultCount");
-  const resultsPerPage = _.get(searchList, "resultsPerPage");
+  const totalResultCount = total;
+  const resultsPerPage = pageSize;
 
   return {
     totalPages,
     totalResultCount,
     resultsPerPage,
-    results: listResults
+    results: schools
   };
 };
 
