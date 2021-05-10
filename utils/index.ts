@@ -13,7 +13,6 @@ const createClient = () => {
 };
 
 const data2Json = data => {
-  fs.writeFileSync("./data.html", data);
   const $ = cheerio.load(data);
 
   const fields = $("[data-component-name]").toArray();
