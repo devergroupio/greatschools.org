@@ -13,15 +13,27 @@ const createClient = () => {
 };
 
 const data2Json = data => {
+  fs.writeFileSync("./data.html", data);
   const $ = cheerio.load(data);
 
   const fields = $("[data-component-name]").toArray();
-  return fields.reduce((p, f) => {
+  const info = $("[type='application/ld+json']").toArray();
+  const fieldsData = fields.reduce((p, f) => {
     const fieldName = $(f).attr("data-component-name");
     const filedData = JSON.parse($(f).html());
     p[fieldName] = filedData;
     return p;
   }, {});
+
+  const infoData = info.reduce((p, f) => {
+    const filedData = JSON.parse($(f).html());
+    p.push(filedData);
+    return p;
+  }, []);
+  return {
+    fieldsData,
+    infoData
+  };
 };
 export const search = async (query, page = 1) => {
   const client = createClient();
